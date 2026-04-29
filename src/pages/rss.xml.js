@@ -3,6 +3,8 @@ import { getCollection } from 'astro:content';
 import { getPublishedPosts } from '../lib/posts';
 import { siteConfig } from '../lib/site';
 
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+
 export async function GET(context) {
   const posts = getPublishedPosts(await getCollection('posts'));
 
@@ -14,7 +16,7 @@ export async function GET(context) {
       title: post.data.title,
       description: post.data.description,
       pubDate: post.data.pubDate,
-      link: `/posts/${post.slug}/`,
+      link: `${basePath}/posts/${post.slug}/`,
     })),
   });
 }

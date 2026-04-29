@@ -1,11 +1,14 @@
 ---
 import { siteConfig } from '../lib/site';
+
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBasePath = (href: string) => `${basePath}${href}`;
 ---
 
 <header class="container header">
-  <a class="brand" href="/">{siteConfig.title}</a>
+  <a class="brand" href={withBasePath("/")}>{siteConfig.title}</a>
   <nav aria-label="Primary navigation">
-    {siteConfig.navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+    {siteConfig.navItems.map((item) => <a href={withBasePath(item.href)}>{item.label}</a>)}
   </nav>
 </header>
 

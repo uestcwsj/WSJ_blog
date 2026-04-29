@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-const site = process.env.SITE_URL ?? 'http://localhost:4321';
-const base = process.env.BASE_PATH ?? '/';
+const site = 'https://uestcwsj.github.io';
+const base = '/WSJ_blog';
 
 export default defineConfig({
   site,

@@ -1,0 +1,32 @@
+---
+import { formatPostDate } from '../lib/dates';
+
+const { post } = Astro.props;
+---
+
+<li class="card">
+  <a href={`/posts/${post.slug}/`}>{post.data.title}</a>
+  <p>{post.data.description}</p>
+  <time datetime={post.data.pubDate.toISOString()}>{formatPostDate(post.data.pubDate)}</time>
+</li>
+
+<style>
+  .card {
+    padding: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+
+  .card a {
+    color: var(--text);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .card p {
+    margin: 0.5rem 0;
+    color: var(--muted);
+  }
+</style>

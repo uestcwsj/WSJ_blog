@@ -1,0 +1,14 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { formatPostDate } from '../lib/dates';
+
+const { post } = Astro.props;
+---
+
+<BaseLayout title={post.data.title} description={post.data.description} path={`/posts/${post.slug}/`}>
+  <article>
+    <h1>{post.data.title}</h1>
+    <time datetime={post.data.pubDate.toISOString()}>{formatPostDate(post.data.pubDate)}</time>
+    <slot />
+  </article>
+</BaseLayout>

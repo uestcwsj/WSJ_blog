@@ -1,0 +1,33 @@
+---
+import { siteConfig } from '../lib/site';
+---
+
+<header class="container header">
+  <a class="brand" href="/">{siteConfig.title}</a>
+  <nav aria-label="Primary navigation">
+    {siteConfig.navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+  </nav>
+</header>
+
+<style>
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .brand {
+    color: var(--text);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  nav {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+</style>

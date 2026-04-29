@@ -1,0 +1,21 @@
+---
+import { buildAbsoluteUrl, siteConfig } from '../lib/site';
+
+const {
+  title = siteConfig.title,
+  description = siteConfig.description,
+  path = '/',
+} = Astro.props;
+
+const pageTitle = title === siteConfig.title ? title : `${title} | ${siteConfig.title}`;
+const siteUrl = Astro.site?.toString() ?? 'http://localhost:4321';
+const canonicalUrl = buildAbsoluteUrl(path, siteUrl);
+---
+
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl} />
+<link rel="alternate" type="application/rss+xml" title={siteConfig.title} href={buildAbsoluteUrl('/rss.xml', siteUrl)} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonicalUrl} />
